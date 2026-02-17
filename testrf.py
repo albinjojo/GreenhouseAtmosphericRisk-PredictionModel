@@ -1,7 +1,6 @@
 import joblib
 import pandas as pd
 
-# Load model and feature structure
 model = joblib.load("crop_risk_model.pkl")
 feature_columns = joblib.load("model_features.pkl")
 
@@ -17,7 +16,6 @@ def predict_risk(temp, humidity, co2, crop_type, crop_stage):
     df = pd.DataFrame([input_dict])
     df = pd.get_dummies(df)
 
-    # Align columns with training
     df = df.reindex(columns=feature_columns, fill_value=0)
 
     risk = model.predict(df)[0]
