@@ -1,8 +1,8 @@
-# EcoGrow – Indoor Environmental Risk Prediction System
+# Indoor Environmental Risk Prediction System
 
 ## Overview
 
-EcoGrow is a crop-aware environmental risk prediction system developed for indoor and polyhouse farming environments.
+A crop-aware environmental risk prediction system developed for indoor and polyhouse farming environments.
 
 The system estimates environmental suitability using:
 
