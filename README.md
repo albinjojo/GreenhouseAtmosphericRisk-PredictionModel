@@ -95,17 +95,15 @@ The system separates:
 
 ## Project Structure
 
+```
 ecogrow-model/
-│
 ├── indoor_crop_risk_dataset_final.csv
-│
 ├── crop_risk_model.pkl
 ├── model_features.pkl
-│
 ├── randomforesttrain.py
 ├── testrf.py
-│
 └── README.md
+```
 
 ---
 
