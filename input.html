@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>EcoGrow Risk Test</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            padding-top: 60px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #2c7be5;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1a5fd0;
+        }
+
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>EcoGrow Risk Prediction</h2>
+
+    <input type="number" id="temperature" placeholder="Temperature (°C)" step="0.1">
+    <input type="number" id="humidity" placeholder="Humidity (%)" step="0.1">
+    <input type="number" id="co2" placeholder="CO2 (ppm)" step="1">
+
+    <select id="crop_type">
+        <option value="tomato">Tomato</option>
+        <option value="capsicum">Capsicum</option>
+        <option value="cucumber">Cucumber</option>
+        <option value="lettuce">Lettuce</option>
+        <option value="strawberry">Strawberry</option>
+    </select>
+
+    <select id="crop_stage">
+        <option value="vegetative">Vegetative</option>
+        <option value="flowering">Flowering</option>
+        <option value="fruiting">Fruiting</option>
+    </select>
+
+    <button onclick="predictRisk()">Predict</button>
+
+    <div id="output" class="result"></div>
+</div>
+
+<script>
+async function predictRisk() {
+
+    const temperature = document.getElementById("temperature").value;
+    const humidity = document.getElementById("humidity").value;
+    const co2 = document.getElementById("co2").value;
+    const crop_type = document.getElementById("crop_type").value;
+    const crop_stage = document.getElementById("crop_stage").value;
+
+    const outputDiv = document.getElementById("output");
+
+    outputDiv.innerHTML = "Loading...";
+
+    try {
+        const response = await fetch("http://localhost:5000/predict", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                temperature: parseFloat(temperature),
+                humidity: parseFloat(humidity),
+                co2: parseFloat(co2),
+                crop_type: crop_type,
+                crop_stage: crop_stage
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            outputDiv.innerHTML = `
+                <strong>Risk Score:</strong> ${data.risk_score}<br>
+                <strong>Status:</strong> ${data.status}
+            `;
+        } else {
+            outputDiv.innerHTML = `<span class="error">${data.error}</span>`;
+        }
+
+    } catch (error) {
+        outputDiv.innerHTML = `<span class="error">Cannot connect to Flask API</span>`;
+    }
+}
+</script>
+
+</body>
+</html>
