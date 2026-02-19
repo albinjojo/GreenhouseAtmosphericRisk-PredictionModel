@@ -1,10 +1,3 @@
-Got it. Below is the **final README in proper Markdown format**, clean and ready to paste directly into `README.md`.
-
-No commentary. Just the file content.
-
----
-
-```markdown
 # Indoor Environmental Risk Prediction System
 
 ## Overview
@@ -71,9 +64,7 @@ All components run locally during development.
 ### Data Schema
 
 ```
-
 temperature | humidity | co2 | crop_type | crop_stage | risk_score
-
 ```
 
 ### Target Variable
@@ -121,7 +112,6 @@ This ensures clean separation between prediction and interpretation without hard
 ## Project Structure
 
 ```
-
 ecogrow-model/
 ├── indoor_crop_risk_dataset_final.csv
 ├── randomforesttrain.py
@@ -130,8 +120,7 @@ ecogrow-model/
 ├── crop_risk_model.pkl
 ├── model_features.pkl
 └── README.md
-
-````
+```
 
 ---
 
@@ -185,7 +174,7 @@ Install dependencies:
 
 ```bash
 pip install pandas scikit-learn joblib flask flask-cors
-````
+```
 
 ---
 
@@ -260,14 +249,3 @@ Example Response:
 * Controlled-environment farming prototypes
 * ML + Flask backend integration practice
 * Deployment and model optimization demonstration
-
-```
-
----
-
-If you want, I can now also give you:
-
-- A short professional one-line GitHub repository description  
-- Or recommended GitHub topics for better visibility  
-- Or a deployment-ready version including Docker section.
-```
