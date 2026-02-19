@@ -152,7 +152,7 @@ Used for local validation and debugging.
 
 ---
 
-### `app.py`
+### `rfonapi.py`
 
 Flask API implementation.
 
@@ -202,7 +202,7 @@ python testrf.py
 ### Running Flask API
 
 ```bash
-python app.py
+python rfonapi.py
 ```
 
 Endpoint:
