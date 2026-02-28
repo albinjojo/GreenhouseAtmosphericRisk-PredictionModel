@@ -5,7 +5,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 import joblib
 import os
 
-df = pd.read_csv("indoor_crop_risk_dataset_final.csv")
+df = pd.read_csv("indoor_crop_risk_dataset_final 15k.csv")
 
 df = pd.get_dummies(df, columns=["crop_type", "crop_stage"], drop_first=True)
 
